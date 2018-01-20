@@ -2,7 +2,7 @@
   <div>
       <button class="btn" @click="onGetLpz">Get Lpz</button>
       <hr>
-      <app-lpz v-for="lpz in lpzs" :key="lpz.id" :lp="lpz"></app-lpz>
+      <app-lpz v-for="lpz in lpzs" :key="lpz.id" :lp="lpz" @lpzDeleted="onLpzDeleted($event)" ></app-lpz>
   </div>
 </template>
 
@@ -26,6 +26,12 @@ export default {
                 .catch(
                     (error) => console.log(error)
                 );
+        },
+        onLpzDeleted(id) {
+            const position = this.lpzs.findIndex((element) => {
+                return element.id == id;
+            });
+            this.lpzs.splice(position, 1);
         }
     },
     components: {
