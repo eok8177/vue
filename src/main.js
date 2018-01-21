@@ -4,12 +4,14 @@ import VueRouter from 'vue-router';
 import App from './App.vue'
 import Lpzs from './components/lpzs.vue'
 import NewLpz from './components/new-lpz.vue'
+import Signin from './components/signin.vue'
 
 Vue.use(VueRouter);
 
 const routes = [
   { path: '', component: Lpzs},
-  { path: '/new-lpz', component: NewLpz }
+  { path: '/new-lpz', component: NewLpz },
+  { path: '/signin', component: Signin }
 ];
 
 const router = new VueRouter({

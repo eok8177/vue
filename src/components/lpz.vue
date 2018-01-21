@@ -35,8 +35,9 @@ export default {
             this.editing = false;
         },
         onDelete() {
+            const token = localStorage.getItem('token');
             this.$emit('lpzDeleted', this.lp.id);
-            axios.delete('http://lara.local/api/lpz/' + this.lp.id)
+            axios.delete('http://lara.local/api/lpz/' + this.lp.id + '?token=' + token)
                 .then(
                     (response) => console.log(response)
                 )
@@ -45,9 +46,10 @@ export default {
                 );
         },
         onUpdate() {
+            const token = localStorage.getItem('token');
             this.editing = false;
             this.lp.name = this.nameValue;
-            axios.put('http://lara.local/api/lpz/' + this.lp.id, {name: this.nameValue})
+            axios.put('http://lara.local/api/lpz/' + this.lp.id+ '?token=' + token, {name: this.nameValue})
                 .then(
                     (response) => console.log(response)
                 )

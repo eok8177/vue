@@ -18,7 +18,8 @@ export default {
   },
   methods: {
       onSubmitted() {
-          axios.post('http://lara.local/api/lpz', {name: this.lpzName})
+          const token = localStorage.getItem('token');
+          axios.post('http://lara.local/api/lpz?token=' + token, {name: this.lpzName})
             .then(
                 (response) => console.log(response)
             )
